@@ -1,6 +1,4 @@
-# ?Maybe separate into movement class and input class?  The other hard part is conceptualizing how I am making
-#something move.  What's moving?  In reality nothing.  I am inputting numbers and a direction.  I am 
-# outputting numbers and a direction.  That's it.? 
+# ?Is there a better way for me to organze this into classes?
 
 puts "Please input the size of grid we will use for the mars plateau.  It should be two numbers separated by spaces '_ _'."
 grid_size = gets.chomp
@@ -47,6 +45,7 @@ def mars_rover(grid_size, mr1_starting_location, mr1_instructions)
   	  elsif current_facing_direction == W 
   		  current_facing_direction = N
   	  end
+  	  
   		# There has to be a way to refactor this so its not so looooong.  
     else
       if (current_facing_direction == N) && (mr1_instructions[i] == M)
