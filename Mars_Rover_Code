@@ -48,7 +48,7 @@ def mars_rover(grid_size, mr1_starting_location, mr1_instructions)
   		  current_facing_direction = N
   	  end
   		# There has to be a way to refactor this so its not so looooong.  
-    elsif 
+    else
       if (current_facing_direction == N) && (mr1_instructions[i] == M)
     	  current_Y_coordinate += 1
       elsif (current_facing_direction == W) && (mr1_instructions[i] == M)
