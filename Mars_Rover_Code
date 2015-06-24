@@ -1,0 +1,70 @@
+# ?Maybe separate into movement class and input class?  The other hard part is conceptualizing how I am making
+#something move.  What's moving?  In reality nothing.  I am inputting numbers and a direction.  I am 
+# outputting numbers and a direction.  That's it.? 
+
+puts "Please input the size of grid we will use for the mars plateau.  It should be two numbers separated by spaces '_ _'."
+grid_size = gets.chomp
+puts "Please input the location of MR1. It should be two numbers and a cardinal direction separated by spaces '_ _ _'."
+mr1_starting_location = gets.chomp
+puts "Please input the directions you wish MR1 to follow . It should be a combination of L R and M with no spaces '___'"
+mr1_instructions = gets.chomp
+
+def mars_rover(grid_size, mr1_starting_location, mr1_instructions)
+
+  #display grid size
+  grid_size = grid_size.split("") 
+  "For your grid: \nthe max X value is #{grid_size[0]} \nthe max Y value is #{grid_size[2]}"
+
+  # priming the location
+  mr1_starting_location = mr1_starting_location.gsub(/\s+/, "")
+  mr1_starting_location = mr1_starting_location.split("")
+  current_X_coordinate = mr1_starting_location[0]
+  current_Y_coordinate = mr1_starting_location[1]
+  current_facing_direction = mr1_starting_location[2]
+
+
+  # Change the direction
+  i = 0
+  while i < mr1_instructions.length
+    if mr1_instructions[i] == L 
+  	  if current_facing_direction == N 
+  	      current_facing_direction = W
+  	  elsif current_facing_direction == W 
+  		  current_facing_direction = S
+  	  elsif current_facing_direction == S 
+  		  current_facing_direction = E
+  	  elsif current_facing_direction == E 
+  		  current_facing_direction = N
+  	  end
+
+    elsif mr1_instructions[i] == R
+      elsif current_facing_direction == N 
+  		  current_facing_direction = E
+  	  elsif current_facing_direction == E
+  		  current_facing_direction = S
+  	  elsif current_facing_direction == S 
+  		  current_facing_direction = W
+  	  elsif current_facing_direction == W 
+  		  current_facing_direction = N
+  	  end
+  		# There has to be a way to refactor this so its not so looooong.  
+    elsif 
+      if (current_facing_direction == N) && (mr1_instructions[i] == M)
+    	  current_Y_coordinate += 1
+      elsif (current_facing_direction == W) && (mr1_instructions[i] == M)
+    	  current_X_coordinate -= 1
+      elsif (current_facing_direction == S) && (mr1_instructions[i] == M)
+    	  current_Y_coordinate -= 1
+      elsif (current_facing_direction == E) && (mr1_instructions[i] == M)
+    	  current_X_coordinate += 1
+      end
+    end
+  	i += 1
+  end
+  return "Mars Rover 1 is currently at: #{current_X_coordinate} #{current_Y_coordinate} #{current_facing_direction}"
+end
+
+
+
+
+
